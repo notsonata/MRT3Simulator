@@ -37,6 +37,15 @@ public class MRT3SimulationApp {
 
         // Create a JTable with the table model
         app.table = new JTable(app.tableModel);
+        
+        app.table.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {  // Only handle the final event
+                int selectedRow = app.table.getSelectedRow();
+                if (selectedRow != -1) {  // Make sure a row is actually selected
+                    app.currentIndex = selectedRow;
+                }
+            }
+        });
 
         // Disable column reordering
         app.table.getTableHeader().setReorderingAllowed(false);
@@ -262,22 +271,39 @@ public class MRT3SimulationApp {
         deleteButton.addActionListener(e -> {
             int selectedRow = app.table.getSelectedRow();
             if (selectedRow >= 0) {
-                int modelRow = app.table.convertRowIndexToModel(selectedRow); // Convert to model index
-                int id = ((MRT3TableModel)app.tableModel).getHiddenId(modelRow);	
+                // Convert view index to model index if table is sorted/filtered
+                int modelRow = app.table.convertRowIndexToModel(selectedRow);
 
-                int confirm = JOptionPane.showConfirmDialog(
-                    frame, 
-                    "Are you sure you want to delete this schedule?", 
-                    "Confirm Deletion", 
-                    JOptionPane.YES_NO_OPTION
-                );
+                try {
+                    int id = ((MRT3TableModel) app.tableModel).getHiddenId(modelRow);
 
-                if (confirm == JOptionPane.YES_OPTION) {
-                    app.dbHandler.deleteDataFromDatabase(id); // Pass ID to delete from DB
-                    app.dbHandler.loadDataFromDatabase(app.tableModel); // Refresh table
+                    int confirm = JOptionPane.showConfirmDialog(
+                        frame, 
+                        "Are you sure you want to delete this schedule?", 
+                        "Confirm Deletion", 
+                        JOptionPane.YES_NO_OPTION
+                    );
+
+                    if (confirm == JOptionPane.YES_OPTION) {
+                        app.dbHandler.deleteDataFromDatabase(id);
+                        ((MRT3TableModel) app.tableModel).clearHiddenIds(); // Clear hidden IDs
+                        app.dbHandler.loadDataFromDatabase(app.tableModel); // Refresh table
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(
+                        frame,
+                        "Error deleting schedule. Please try again.",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE
+                    );
                 }
             } else {
-                JOptionPane.showMessageDialog(frame, "Please select a row to delete.", "Error Deleting Schedule", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(
+                    frame,
+                    "Please select a row to delete.",
+                    "Error Deleting Schedule",
+                    JOptionPane.ERROR_MESSAGE
+                );
             }
         });
 

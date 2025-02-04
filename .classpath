@@ -6,6 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Train Sim/TrainScheduling-master/MRT3Simulation/sqlite-jdbc-3.48.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/huawei/Documents/MRT3Simulator/resources/sqlite-jdbc-3.48.0.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

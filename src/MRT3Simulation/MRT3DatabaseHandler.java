@@ -117,7 +117,4 @@ public class MRT3DatabaseHandler {
 	            e.printStackTrace();
 	        }
 	    }
-	    
-	    
-
 }
