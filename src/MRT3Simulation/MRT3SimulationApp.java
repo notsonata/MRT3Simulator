@@ -233,13 +233,13 @@ public class MRT3SimulationApp {
                 );
             }
 
-            String arrivalTime = MRT3Utils.getValidatedTimeInput(frame, null, "Add Arrival Time", "Enter Arrival Time (HH:MM):");
+            String arrivalTime = MRT3Utils.getValidatedTimeInput(frame, null, "Add Arrival Time", "Enter Arrival Time (HH:MM 24H format):");
             if (arrivalTime == null) {
                 // User clicked Cancel, handle accordingly
                 return;
             }
 
-            String departureTime = MRT3Utils.getValidatedTimeInput(frame, null, "Add Departure Time", "Enter Departure Time (HH:MM):");
+            String departureTime = MRT3Utils.getValidatedTimeInput(frame, null, "Add Departure Time", "Enter Departure Time (HH:MM 24H format):");
             if (departureTime == null) {
                 // User clicked Cancel, handle accordingly
                 return;
@@ -389,13 +389,13 @@ public class MRT3SimulationApp {
                     );
                 }
 
-                String newArrivalTime = MRT3Utils.getValidatedTimeInput(frame, currentArrivalTime, "Edit Arrival Time", "Edit Arrival Time (HH:MM):");
+                String newArrivalTime = MRT3Utils.getValidatedTimeInput(frame, currentArrivalTime, "Edit Arrival Time", "Edit Arrival Time (HH:MM 24H format):");
                 if (newArrivalTime == null) {
                     // User clicked Cancel, handle accordingly
                     return;
                 }
 
-                String newDepartureTime = MRT3Utils.getValidatedTimeInput(frame, currentDepartureTime, "Edit Departure Time", "Edit Departure Time (HH:MM):");
+                String newDepartureTime = MRT3Utils.getValidatedTimeInput(frame, currentDepartureTime, "Edit Departure Time", "Edit Departure Time (HH:MM 24H format):");
                 if (newDepartureTime == null) {
                     // User clicked Cancel, handle accordingly
                     return;
