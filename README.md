@@ -6,16 +6,16 @@ The MRT3 Train Scheduling App is a simple Java application designed to manage an
 
 
 # Features  
-Train Scheduling: Add, update, delete, and view train schedules.  
-Database Management: Store and retrieve train schedule data using SQLite.  
-User Interface: A simple and intuitive GUI built with Java Swing.  
+- Train Scheduling: Add, update, delete, and view train schedules.  
+- Database Management: Store and retrieve train schedule data using SQLite.  
+- User Interface: A simple and intuitive GUI built with Java Swing.  
 
 
 
 
 # Prerequisites  
 Before working on the application, ensure the following are installed:  
-Git  
-Java Development Kit (JDK): Version 8 or higher.  
-SQLite: For database management (Embedded).  
-IDE: IntelliJ IDEA, Eclipse, or any Java-supported IDE.  
+- Git  
+- Java Development Kit (JDK): Version 8 or higher.  
+- SQLite: For database management (Embedded).  
+- IDE: IntelliJ IDEA, Eclipse, or any Java-supported IDE.  
